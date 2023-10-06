@@ -1,6 +1,7 @@
 package com.example.LibraryManagementSystem.service;
 
 import com.example.LibraryManagementSystem.Enum.CardStatus;
+import com.example.LibraryManagementSystem.Enum.Gender;
 import com.example.LibraryManagementSystem.model.LibraryCard;
 import com.example.LibraryManagementSystem.model.Student;
 import com.example.LibraryManagementSystem.repositary.StudentRepo;
@@ -9,6 +10,8 @@ import org.hibernate.boot.CacheRegionDefinition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -37,5 +40,15 @@ public class StudentService {
             return studentOptional.get();
         }
         return null;
+    }
+
+    public List<String> getAllMales() {
+
+        List<String>names = new ArrayList<>();
+        List<Student>students = studentRepo.findByGender(Gender.MALE);
+        for(Student s:students){
+            names.add(s.getName());
+        }
+        return names;
     }
 }
