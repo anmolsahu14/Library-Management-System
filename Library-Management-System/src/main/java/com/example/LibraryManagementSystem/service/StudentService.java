@@ -2,6 +2,8 @@ package com.example.LibraryManagementSystem.service;
 
 import com.example.LibraryManagementSystem.Enum.CardStatus;
 import com.example.LibraryManagementSystem.Enum.Gender;
+import com.example.LibraryManagementSystem.dto.requestdto.StudentRequest;
+import com.example.LibraryManagementSystem.dto.responsedto.StudentResponse;
 import com.example.LibraryManagementSystem.model.LibraryCard;
 import com.example.LibraryManagementSystem.model.Student;
 import com.example.LibraryManagementSystem.repositary.StudentRepo;
@@ -20,7 +22,16 @@ public class StudentService {
 
     @Autowired
     StudentRepo studentRepo;
-    public String addStudent(Student student) {
+    public StudentResponse addStudent(StudentRequest studentRequest) {
+
+        //dto to model
+
+        Student student = new Student();
+        student.setName(studentRequest.getName());
+        student.setAge(studentRequest.getAge());
+        student.setGender(studentRequest.getGender());
+        student.setEmail(studentRequest.getEmail());
+
 
         LibraryCard libraryCard = new LibraryCard();
 
@@ -31,7 +42,16 @@ public class StudentService {
         student.setLibraryCard(libraryCard);
 
         Student savedstudent = studentRepo.save(student);
-        return "Student saved successfully!!!";
+
+        StudentResponse studentResponse = new StudentResponse();
+
+        studentResponse.setName(savedstudent.getName());
+        studentResponse.setEmail(savedstudent.getEmail());
+        studentResponse.setMessage("You have been registered!!!!");
+        studentResponse.setCardIssueNo(savedstudent.getLibraryCard().getCardNo());
+
+        return studentResponse;
+
     }
 
     public Student getStudent(int regNo) {

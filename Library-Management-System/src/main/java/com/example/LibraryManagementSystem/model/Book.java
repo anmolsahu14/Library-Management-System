@@ -5,6 +5,9 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
 @NoArgsConstructor
@@ -25,6 +28,8 @@ public class Book {
     @Enumerated(EnumType.STRING)
     Genre genre;
 
+    boolean issued;
+
     double cost;
 
     @ManyToOne
@@ -32,6 +37,8 @@ public class Book {
     Author author;
 
 
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
+    List<Transaction> transactions = new ArrayList<>();
 
 
 
