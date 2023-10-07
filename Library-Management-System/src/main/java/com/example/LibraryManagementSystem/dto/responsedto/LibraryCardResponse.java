@@ -1,6 +1,6 @@
 package com.example.LibraryManagementSystem.dto.responsedto;
 
-import com.example.LibraryManagementSystem.model.LibraryCard;
+import com.example.LibraryManagementSystem.Enum.CardStatus;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -9,16 +9,13 @@ import lombok.experimental.FieldDefaults;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class StudentResponse {
+public class LibraryCardResponse {
 
-    String name;
+    String cardNo;
 
-    String email;
+    CardStatus cardStatus;
 
-    String message;
+    String issueDate;
 
     LibraryCardResponse libraryCardResponse;
-
-
-
 }

@@ -22,8 +22,8 @@ public class Transaction {
 
     String transactionNumber;
 
-    @CreationTimestamp
-    Date transactionTime;
+   // @CreationTimestamp
+    String transactionTime;
 
     TransactionStatus transactionStatus;
 

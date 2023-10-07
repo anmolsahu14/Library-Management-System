@@ -28,8 +28,8 @@ public class Author {
     @Column(unique = true,nullable = false)
     String emailId;
 
-    @UpdateTimestamp
-    Date lastActivity;
+    //@UpdateTimestamp
+    String lastActivity;
 
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
     List<Book> books = new ArrayList<>();

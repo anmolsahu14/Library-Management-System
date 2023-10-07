@@ -48,11 +48,11 @@ public class LibraryCard {
         this.cardStatus = cardStatus;
     }
 
-    public Date getIssueDate() {
+    public String getIssueDate() {
         return issueDate;
     }
 
-    public void setIssueDate(Date issueDate) {
+    public void setIssueDate(String issueDate) {
         this.issueDate = issueDate;
     }
 
@@ -67,8 +67,8 @@ public class LibraryCard {
     @Enumerated(EnumType.STRING)
     CardStatus cardStatus;
 
-    @CreationTimestamp
-    Date issueDate;
+    //@CreationTimestamp
+    String issueDate;
 
     @OneToOne
     @JoinColumn
