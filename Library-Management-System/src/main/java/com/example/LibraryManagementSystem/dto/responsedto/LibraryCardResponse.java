@@ -9,6 +9,7 @@ import lombok.experimental.FieldDefaults;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class LibraryCardResponse {
 
     String cardNo;
