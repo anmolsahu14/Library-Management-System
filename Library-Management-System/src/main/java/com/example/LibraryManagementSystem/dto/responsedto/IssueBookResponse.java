@@ -19,7 +19,7 @@ public class IssueBookResponse {
 
     TransactionStatus transactionStatus;
 
-    BookResponseDto bookResponseDto;
+    BookResponse bookResponseDto;
 
     StudentResponse studentResponse;
 

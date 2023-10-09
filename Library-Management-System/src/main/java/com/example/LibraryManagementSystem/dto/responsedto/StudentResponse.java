@@ -9,6 +9,7 @@ import lombok.experimental.FieldDefaults;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class StudentResponse {
 
     String name;
@@ -18,7 +19,5 @@ public class StudentResponse {
     String message;
 
     LibraryCardResponse libraryCardResponse;
-
-
 
 }

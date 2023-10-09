@@ -2,7 +2,8 @@ package com.example.LibraryManagementSystem.service;
 
 import com.example.LibraryManagementSystem.Enum.Genre;
 import com.example.LibraryManagementSystem.Exceptions.AuthorNotFoundException;
-import com.example.LibraryManagementSystem.dto.responsedto.BookResponseDto;
+import com.example.LibraryManagementSystem.Transformer.BookTransformer;
+import com.example.LibraryManagementSystem.dto.responsedto.BookResponse;
 import com.example.LibraryManagementSystem.model.Author;
 import com.example.LibraryManagementSystem.model.Book;
 import com.example.LibraryManagementSystem.repositary.AuthorRepository;
@@ -38,7 +39,7 @@ public class BookService {
 
     }
 
-    public List<BookResponseDto> getBookByGenreAndCostGreaterThan(String genre, double cost) {
+    public List<BookResponse> getBookByGenreAndCostGreaterThan(String genre, double cost) {
 
         // List<Book> book = bookRepository.findAll();
 
@@ -46,37 +47,23 @@ public class BookService {
 
         //prepare the response,convert model to dto
 
-        List<BookResponseDto> response = new ArrayList<>();
+        List<BookResponse> response = new ArrayList<>();
         for (Book book : books) {
-            BookResponseDto bookResponseDto = new BookResponseDto();
-            bookResponseDto.setTitle(book.getTitle());
-            bookResponseDto.setCost(book.getCost());
-            bookResponseDto.setGenre(book.getGenre());
-            bookResponseDto.setNoOfPages(book.getNoOfPages());
-            bookResponseDto.setAuthorName(book.getAuthor().getName());
-            response.add(bookResponseDto);
+           response.add(BookTransformer.BookToBookResponse(book));
         }
-
         return response;
     }
 
-    public List<BookResponseDto> getBookByGenreAndCostGreaterThanhql(Genre genre, double cost) {
+    public List<BookResponse> getBookByGenreAndCostGreaterThanhql(Genre genre, double cost) {
 
         List<Book> books = bookRepository.getBookByGenreAndCostGreaterThanhql(genre, cost);
 
         //prepare the response,convert model to dto
 
-        List<BookResponseDto> response = new ArrayList<>();
+        List<BookResponse> response = new ArrayList<>();
         for (Book book : books) {
-            BookResponseDto bookResponseDto = new BookResponseDto();
-            bookResponseDto.setTitle(book.getTitle());
-            bookResponseDto.setCost(book.getCost());
-            bookResponseDto.setGenre(book.getGenre());
-            bookResponseDto.setNoOfPages(book.getNoOfPages());
-            bookResponseDto.setAuthorName(book.getAuthor().getName());
-            response.add(bookResponseDto);
+            response.add(BookTransformer.BookToBookResponse(book));
         }
-
         return response;
 
 
